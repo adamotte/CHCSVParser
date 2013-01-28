@@ -363,7 +363,8 @@ NSString *const CHCSVErrorDomain = @"com.davedelong.csv";
                 [self _advance]; // consume the backslash
             } else if ([_validFieldCharacters characterIsMember:next] ||
                        [newlines characterIsMember:next] ||
-                       next == COMMA) {
+                       next == COMMA ||
+                       next == _delimiter) {
                 [_sanitizedField appendFormat:@"%C", next];
                 [self _advance];
             } else if (next == DOUBLE_QUOTE && [self _peekPeekCharacter] == DOUBLE_QUOTE) {
